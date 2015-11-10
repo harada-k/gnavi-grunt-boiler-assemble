@@ -1,7 +1,8 @@
 {
-  "name": "",
+  "name": "gnavi-grunt-boiler-assemble",
+  "description": "grunt boilerplate for gnavi front-end development",
   "version": "1.0.0",
-  "description": "",
+  "homepage": "https://github.com/gurunavi-creators/gnavi-grunt-boiler-assemble",
   "main": "index",
   "scripts": {
     "build": "grunt eslint",
@@ -11,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint-config-gnavi": "0.0.4",
+    "eslint-config-gnavi": "0.0.8",
     "grunt": "^0.4.5",
     "grunt-assemble": "^0.4.0",
     "grunt-autoprefixer": "^3.0.0",
