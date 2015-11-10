@@ -1,7 +1,8 @@
-# grunt-boiler
+# gnavi-grunt-boiler-assemble
 
 
 # config
+---
 
 ## install
 
@@ -20,7 +21,17 @@
 
 ## build command
 
+### for Product
+
     grunt
+
+### for dev
+
+    grunt dev
+
+### for local
+
+    grunt local
 
 
 ## watch command
@@ -46,6 +57,7 @@
 
 
 # package
+---
 
 ## package installed
 
@@ -69,9 +81,44 @@
 - "grunt-spritesmith": "^4.5.2",
 - "grunt-styledocco": "^0.2.1",
 - "handlebars-helper-minify": "^0.1.3",
+- "handlebars-helpers": "^0.5.8",
 - "jit-grunt": "^0.9.1",
 - "stylestats": "^5.4.2",
 - "time-grunt": "^1.2.1"
+
+
+# ルートディレクトリ構成
+---
+
+    bin/ ： ビルド・デプロイシェル
+    dist/ ： 出力ディレクトリ
+    src/ ： 開発ディレクトリ
+    tmp/ ： 中間生成物一時保管ディレクトリ
+    .editorconfig
+    .gitignore
+    Gruntfile.js
+    Makefile ： ビルド・デプロイシェル
+    package.json
+    README.md
+    stats.csv ： stylestatsファイル
+
+
+# 開発ディレクトリ構成
+---
+
+編集対象は src/ 以下のみ
+
+    src/
+      └ hbs/ ： handlebars view
+        └ data/ ： data
+        └ html/ ： page
+        └ include/ ： parts
+        └ layout/ ： layout
+      └ img/ ： 画像
+      └ js/ ： js
+      └ scss/ ： sass
+        └ all/ ： all.css
+      └ sprite/ ： sprite画像
 
 
 
