@@ -205,6 +205,9 @@ module.exports = function (grunt) {
 
     // watch
     watch: {
+      options: {
+        livereload: true
+      },
       css: {
         files: ['<%= path.scss_src %>**/*.scss'],
         tasks: ['build:css']
@@ -215,15 +218,18 @@ module.exports = function (grunt) {
       },
       html: {
         files: ['<%= path.html_src %>**/*.hbs'],
-        tasks: ['build:html']
+        tasks: ['local'],
+        options: {
+          livereload: true
+        }
       },
       img: {
         files: ['<%= path.img_src %>**/*'],
-        tasks: ['build:copy']
+        tasks: ['local']
       },
       process: {
         files: ['Gruntfile.js'],
-        tasks: ['build']
+        tasks: ['local']
       }
     },
 
@@ -247,7 +253,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', ['build:css', 'build:js', 'build:html', 'build:copy']);
   grunt.registerTask('test', ['jshint', 'eslint']);
   grunt.registerTask('styleguide', ['build', 'styledocco']);
-  grunt.registerTask('default', 'build');
+  grunt.registerTask('default', ['build']);
   
   // option task
   grunt.registerTask('local', 'build for local', function () {
