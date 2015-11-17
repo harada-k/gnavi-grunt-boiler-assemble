@@ -112,7 +112,7 @@ module.exports = function (grunt) {
     concat: {
       options: {
         banner: [
-          '(function(WIN, $, PROJECTNAMESPACE){',
+          '(function(window, $, PROJECTNAMESPACE){',
           "  'use strict';",
           '  PROJECTNAMESPACE = PROJECTNAMESPACE || {};',
           '',
