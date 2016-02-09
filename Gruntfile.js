@@ -37,6 +37,16 @@ module.exports = function (grunt) {
   // process
   grunt.initConfig({
 
+    // version
+    version: {
+      js: {
+        all: '1.0.0'
+      },
+      css: {
+        all: '1.0.0'
+      }
+    },
+
     // path
     path: {
       src: 'src/',
@@ -103,7 +113,7 @@ module.exports = function (grunt) {
           restructure: false
         },
         files: {
-          '<%= path.dist %>css/all.css': '<%= path.tmp %>css/all.css'
+          '<%= path.dist %>css/all-<%= version.css.all %>.css': '<%= path.tmp %>css/all.css'
         }
       }
     },
@@ -142,7 +152,7 @@ module.exports = function (grunt) {
       },
       app: {
         files: {
-          '<%= path.dist %>js/all.js': '<%= path.tmp %>js/all.js'
+          '<%= path.dist %>js/all-<%= version.js.all %>.js': '<%= path.tmp %>js/all.js'
         }
       }
     },
@@ -161,6 +171,16 @@ module.exports = function (grunt) {
         assets: '',
         minify: {
           removeComments: true
+        },
+
+        // file
+        file : {
+          css: {
+            all: 'all-<%= version.css.all %>.css'
+          },
+          js: {
+            all: 'all-<%= version.js.all %>.js'
+          }
         }
       },
       files: {
@@ -209,22 +229,19 @@ module.exports = function (grunt) {
         livereload: true
       },
       css: {
-        files: ['<%= path.scss_src %>**/*.scss'],
+        files: ['<%= path.src %>**/*.scss'],
         tasks: ['build:css']
       },
       js: {
-        files: ['<%= path.js_src %>**/*.js'],
+        files: ['<%= path.src %>**/*.js'],
         tasks: ['build:js']
       },
       html: {
-        files: ['<%= path.html_src %>**/*.hbs'],
-        tasks: ['local'],
-        options: {
-          livereload: true
-        }
+        files: ['<%= path.src %>**/*.hbs'],
+        tasks: ['local']
       },
       img: {
-        files: ['<%= path.img_src %>**/*'],
+        files: ['<%= path.src %>**/*.png', '<%= path.src %>**/*.jpg', '<%= path.src %>**/*.gif'],
         tasks: ['local']
       },
       process: {
