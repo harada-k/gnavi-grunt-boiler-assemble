@@ -76,7 +76,7 @@ module.exports = function (grunt) {
     },
 
     // css
-    sass: {
+    sass_dev: {
       all: {
         options: {
           style: 'compact',
@@ -84,7 +84,19 @@ module.exports = function (grunt) {
           noCache: true
         },
         files: {
-          '<%= path.tmp %>css/all.css': '<%= path.scss_src %>all/import.scss'
+          '<%= path.tmp %>css/all.css': '<%= path.scss_src %>all/import_dev.scss'
+        }
+      }
+    },
+    sass_prd: {
+      all: {
+        options: {
+          style: 'compact',
+          sourcemap: 'none',
+          noCache: true
+        },
+        files: {
+          '<%= path.tmp %>css/all.css': '<%= path.scss_src %>all/import_dev.scss'
         }
       }
     },
@@ -263,11 +275,13 @@ module.exports = function (grunt) {
   });
 
   // task
-  grunt.registerTask('build:css', ['sass', 'autoprefixer', 'csscomb', 'csso']);
+  grunt.registerTask('build:css_dev', ['sass_dev', 'autoprefixer', 'csscomb', 'csso']);
+  grunt.registerTask('build:css_prd', ['sass_prd', 'autoprefixer', 'csscomb', 'csso']);
   grunt.registerTask('build:js', ['concat', 'uglify']);
   grunt.registerTask('build:html', ['assemble']);
   grunt.registerTask('build:copy', ['copy']);
-  grunt.registerTask('build', ['build:css', 'build:js', 'build:html', 'build:copy']);
+  grunt.registerTask('build', ['build:css_prd', 'build:js', 'build:html', 'build:copy']);
+  grunt.registerTask('build dev', ['build:css_dev', 'build:js', 'build:html', 'build:copy']);
   grunt.registerTask('test', ['jshint', 'eslint']);
   grunt.registerTask('styleguide', ['build', 'styledocco']);
   grunt.registerTask('default', ['build']);
@@ -276,11 +290,11 @@ module.exports = function (grunt) {
   grunt.registerTask('local', 'build for local', function () {
     grunt.config.set('assemble.files.options.statPath', '../');
     grunt.config.set('assemble.files.options.viewPath', '../');
-    grunt.task.run(['build']);
+    grunt.task.run(['build dev']);
   });
   grunt.registerTask('dev', 'build for dev', function () {
     grunt.config.set('assemble.files.options.statPath', '/');
     grunt.config.set('assemble.files.options.viewPath', '/');
-    grunt.task.run(['build']);
+    grunt.task.run(['build dev']);
   });
 };

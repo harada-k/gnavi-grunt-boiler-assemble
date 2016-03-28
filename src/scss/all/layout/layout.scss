@@ -2,7 +2,7 @@
 
 // l-body
 .l-body {
-    background: url(../img/bg.png) repeat-x center 0;
+  background: url(#{$PATH_IMG}bg.png) repeat-x center 0;
 }
 
 // l-wrapper
